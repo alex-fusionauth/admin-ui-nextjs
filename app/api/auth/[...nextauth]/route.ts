@@ -2,29 +2,7 @@ import NextAuth, { Account, AuthOptions } from "next-auth"
 import FusionAuthProvider from "next-auth/providers/fusionauth"
 import { GetPublicKeyOrSecret, JwtPayload, verify } from 'jsonwebtoken';
 import jwksClient, { RsaSigningKey } from 'jwks-rsa';
-
-const fusionAuthIssuer = process.env.FUSIONAUTH_ISSUER;
-const fusionAuthClientId = process.env.FUSIONAUTH_CLIENT_ID;
-const fusionAuthClientSecret = process.env.FUSIONAUTH_CLIENT_SECRET;
-const fusionAuthUrl = process.env.FUSIONAUTH_URL;
-const fusionAuthTenantId = process.env.FUSIONAUTH_TENANT_ID;
-
-const missingError = ' missing in environment variables.';
-if (!fusionAuthIssuer) {
-    throw Error('FUSIONAUTH_ISSUER' + missingError)
-}
-if (!fusionAuthClientId) {
-    throw Error('FUSIONAUTH_CLIENT_ID' + missingError)
-}
-if (!fusionAuthClientSecret) {
-    throw Error('FUSIONAUTH_CLIENT_SECRET' + missingError)
-}
-if (!fusionAuthUrl) {
-    throw Error('FUSIONAUTH_URL' + missingError)
-}
-if (!fusionAuthTenantId) {
-    throw Error('FUSIONAUTH_TENANT_ID' + missingError)
-}
+import { fusionAuthIssuer, fusionAuthClientId, fusionAuthClientSecret, fusionAuthUrl, fusionAuthTenantId } from "@/lib/fusionauth";
 
 export const authOptions: AuthOptions =
 {
