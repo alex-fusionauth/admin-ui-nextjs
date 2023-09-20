@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Link from 'next/link';
 import {
   Card,
@@ -6,8 +7,8 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from './ui/card';
-import { buttonVariants } from './ui/button';
+} from '@/components/ui/card';
+import { buttonVariants } from '@/components/ui/button';
 
 export function Welcome() {
   return (
