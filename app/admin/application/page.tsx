@@ -1,10 +1,18 @@
-import { fetchFusionAuth, httpMethods } from '@/lib/fusionauth';
+import { Application, columns } from './columns';
+import { DataTable } from './data-table';
+import { client } from '@/lib/fusionauth';
 
-export default async function Application() {
-  const data = await fetchFusionAuth({
-    path: '/api/application',
-    method: httpMethods.GET,
-  });
-
-  return <div>{JSON.stringify(data)}</div>;
+export default async function Applications() {
+  const data = await client.retrieveApplications();
+  if (data.statusCode !== 200 || data.response?.applications === undefined) {
+    return <div>No Applications Found or No Access.</div>;
+  }
+  return (
+    <div className="container mx-auto py-10">
+      <DataTable
+        columns={columns}
+        data={data.response.applications as Application[]}
+      />
+    </div>
+  );
 }

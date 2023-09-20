@@ -18,7 +18,7 @@ export default function Error({
   return (
     <div>
       <h2>Something went wrong!</h2>
-      <div className="flex text-red-500">{error.message}</div>
+      <div className="flex text-red-500">{JSON.stringify(error.message)}</div>
       <Button
         onClick={
           // Attempt to recover by trying to re-render the segment
