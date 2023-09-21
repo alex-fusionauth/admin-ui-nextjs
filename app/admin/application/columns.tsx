@@ -59,28 +59,29 @@ export const columns: ColumnDef<Application>[] = [
                 <p>Edit</p>
               </TooltipContent>
             </Tooltip>
-            <Tooltip>
-              <TooltipTrigger>
-                <Dialog>
-                  <DialogTrigger>
+
+            <Dialog>
+              <DialogTrigger asChild>
+                <Tooltip>
+                  <TooltipTrigger asChild>
                     <Button variant={'outline'}>
                       <FaMagnifyingGlass />
                     </Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>Details</DialogTitle>
-                      <DialogDescription>
-                        <ScrollArea>{JSON.stringify(app)}</ScrollArea>
-                      </DialogDescription>
-                    </DialogHeader>
-                  </DialogContent>
-                </Dialog>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Open</p>
-              </TooltipContent>
-            </Tooltip>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Add to library</p>
+                  </TooltipContent>
+                </Tooltip>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle>Details</DialogTitle>
+                  <DialogDescription>
+                    <ScrollArea>{JSON.stringify(app)}</ScrollArea>
+                  </DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
           </TooltipProvider>
         </div>
       );
